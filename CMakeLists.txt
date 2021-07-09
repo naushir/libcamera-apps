@@ -32,12 +32,9 @@ endif()
 
 find_package(PkgConfig REQUIRED)
 
-pkg_check_modules(CAMERA REQUIRED libcamera)
-find_library(LIBCAMERA_LIBRARY libcamera.so REQUIRED)
-find_library(LIBCAMERA_BASE_LIBRARY libcamera-base.so REQUIRED)
-set(LIBCAMERA_LIBRARIES ${LIBCAMERA_LIBRARY} ${LIBCAMERA_BASE_LIBRARY})
-message(STATUS ${LIBCAMERA_LIBRARIES})
-include_directories(${CMAKE_SOURCE_DIR} ${CAMERA_INCLUDE_DIRS})
+pkg_check_modules(LIBCAMERA REQUIRED libcamera)
+message(STATUS "LIBCAMERA_LINK_LIBRARIES=${LIBCAMERA_LINK_LIBRARIES}")
+include_directories(${CMAKE_SOURCE_DIR} ${LIBCAMERA_INCLUDE_DIRS})
 
 add_subdirectory(apps)
 add_subdirectory(core)
